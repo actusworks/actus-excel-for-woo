@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "build2": "node js/esbuild.config.mjs",
+    "build": "esbuild js/actus-excel-for-woo.js --bundle --minify --outfile=dist/actus-excel-for-woo.min.js",
+    "watch": "esbuild js/actus-excel-for-woo.js --bundle --outfile=dist/actus-excel-for-woo.min.js --watch"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.11",
+    "javascript-obfuscator": "^4.1.1"
+  },
+  "dependencies": {
+    "esbuild-plugin-obfuscator": "^1.4.0"
+  }
+}
