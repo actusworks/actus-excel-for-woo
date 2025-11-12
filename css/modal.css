@@ -1,0 +1,881 @@
+/**
+ * Modal Styles
+ * 
+ * Styles for the Modal component
+ */
+
+/* Prevent body scroll when modal is open */
+body.actus-modal-is-open {
+	overflow: hidden;
+}
+
+/* Modal Overlay */
+.actus-modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 999999;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.actus-modal-overlay.actus-modal-open {
+	opacity: 1;
+}
+
+/* Modal Container */
+.actus-modal {
+	background: #fff;
+	border-radius: 16px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+	max-height: 90vh;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	transform: scale(0.9);
+	opacity: 0;
+	transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.actus-modal.actus-modal-active {
+	transform: scale(1);
+	opacity: 1;
+}
+
+.actus-modal-container {
+	display: flex;
+	flex-direction: column;
+	max-height: 90vh;
+	overflow: hidden;
+}
+
+/* Hide header for message modals (error, success, warning, info) */
+.actus-modal.actus-modal-message .actus-modal-header {
+	display: none;
+}
+.actus-modal.actus-modal-message .actus-modal-body {
+	padding-bottom: 0;
+}
+
+/* Modal Sizes */
+.actus-modal-small {
+	width: 90%;
+	max-width: 400px;
+}
+
+.actus-modal-medium {
+	width: 90%;
+	max-width: 600px;
+}
+
+.actus-modal-large {
+	width: 90%;
+	max-width: 900px;
+}
+
+.actus-modal-xlarge {
+	width: 95%;
+	max-width: 1200px;
+}
+
+.actus-modal-fullscreen {
+	width: 100%;
+	height: 100vh;
+	max-width: 100%;
+	max-height: 100vh;
+	border-radius: 0;
+}
+
+/* Modal Header */
+.actus-modal-header {
+	padding: 20px 24px;
+	border-bottom: 1px solid #ddd;
+	flex-shrink: 0;
+}
+
+.actus-modal-title {
+	margin: 0;
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 1.4;
+	color: #23282d;
+}
+
+/* Modal Body */
+.actus-modal-body {
+	padding: 24px;
+	overflow-y: auto;
+	flex: 1;
+}
+
+.actus-modal-body::-webkit-scrollbar {
+	width: 8px;
+}
+
+.actus-modal-body::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+.actus-modal-body::-webkit-scrollbar-thumb {
+	background: #888;
+	border-radius: 4px;
+}
+
+.actus-modal-body::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
+/* Modal Footer */
+.actus-modal-footer {
+	padding: 16px 24px;
+	border-top: 1px solid #ddd;
+	display: flex;
+	gap: 8px;
+	justify-content: flex-end;
+	flex-shrink: 0;
+}
+
+.actus-modal-footer .button {
+	margin: 0 !important;
+}
+.actus-btn.actus-modal-flex-1,
+.actus-modal-flex-1 {
+	flex: 1;
+    background: transparent;
+	pointer-events: none;
+}
+
+/* Close Button */
+.actus-modal-close {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	width: 32px;
+	height: 32px;
+	border: none;
+	background: transparent;
+	font-size: 28px;
+	line-height: 1;
+	color: #666;
+	cursor: pointer;
+	border-radius: 4px;
+	transition: background-color 0.2s ease, color 0.2s ease;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0 0 4px;
+	outline: 0;
+}
+.actus-modal-close:hover {
+	background-color: #f0f0f0;
+	color: #000;
+	outline: 0;
+}
+.actus-modal .actus-modal-close:focus-visible,
+.actus-modal-close:focus {
+	outline: 0;
+}
+
+/* Animations */
+
+/* Fade Animation (default) */
+.actus-modal-animation-fade {
+	animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+	from {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+/* Slide Animation */
+.actus-modal-animation-slide {
+	animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+	from {
+		opacity: 0;
+		transform: translateY(50px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Zoom Animation */
+.actus-modal-animation-zoom {
+	animation: modalZoomIn 0.3s ease;
+}
+
+@keyframes modalZoomIn {
+	from {
+		opacity: 0;
+		transform: scale(0.5);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+/* No Animation */
+.actus-modal-animation-none {
+	animation: none !important;
+	transition: none !important;
+}
+
+/* Loading State */
+.actus-modal-loading {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 40px 20px;
+	text-align: center;
+}
+
+.actus-modal-loading p {
+	margin-top: 16px;
+	color: #666;
+}
+
+
+.acex-progress { margin-top: -12px; }
+.actus-modal .svg-loader {
+    width: 100%;
+    height: 80px;
+	fill: var(--actus-primary-color, #2271b1);
+	margin: 0 0 32px;
+}
+
+/* Spinner */
+.actus-spinner {
+	width: 40px;
+	height: 40px;
+	border: 4px solid #f3f3f3;
+	border-top: 4px solid #2271b1;
+	border-radius: 50%;
+	animation: actus-spin 1s linear infinite;
+}
+
+@keyframes actus-spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+/* Prompt Input */
+.actus-modal-prompt {
+	padding: 8px 0;
+}
+
+.actus-modal-prompt p {
+	margin-bottom: 12px;
+}
+
+.actus-modal-prompt .actus-input {
+	width: 100%;
+	padding: 8px 12px;
+	font-size: 14px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+.actus-modal-prompt .actus-input:focus {
+	border-color: #2271b1;
+	outline: none;
+	box-shadow: 0 0 0 1px #2271b1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	.actus-modal {
+		width: 95% !important;
+		max-width: none !important;
+		max-height: 95vh;
+	}
+
+	.actus-modal-header {
+		padding: 16px 20px;
+	}
+
+	.actus-modal-body {
+		padding: 20px;
+	}
+
+	.actus-modal-footer {
+		padding: 12px 20px;
+		flex-wrap: wrap;
+	}
+
+	.actus-modal-footer .actus-btn {
+		flex: 1;
+		min-width: 100px;
+	}
+
+	.actus-modal-title {
+		font-size: 18px;
+		padding-right: 32px; /* Space for close button */
+	}
+}
+
+/* Dark Mode Support (optional) */
+@media (prefers-color-scheme: dark) {
+	.actus-modal {
+		background: #1e1e1e;
+		color: #e0e0e0;
+	}
+
+	.actus-modal-title {
+		color: #e0e0e0;
+	}
+
+	.actus-modal-header,
+	.actus-modal-footer {
+		border-color: #444;
+	}
+
+	.actus-modal-close {
+		color: #aaa;
+	}
+
+	.actus-modal-close:hover {
+		background-color: #333;
+		color: #fff;
+	}
+
+	.actus-modal-body::-webkit-scrollbar-track {
+		background: #2a2a2a;
+	}
+
+	.actus-modal-body::-webkit-scrollbar-thumb {
+		background: #555;
+	}
+
+	.actus-modal-body::-webkit-scrollbar-thumb:hover {
+		background: #777;
+	}
+
+	.actus-modal-prompt .actus-input {
+		background: #2a2a2a;
+		border-color: #444;
+		color: #e0e0e0;
+	}
+
+	.actus-modal-prompt .actus-input:focus {
+		border-color: #2271b1;
+		background: #333;
+	}
+}
+
+/* Accessibility */
+.actus-modal:focus {
+	outline: none;
+}
+
+.actus-modal *:focus-visible {
+	outline: 2px solid #2271b1;
+	outline-offset: 2px;
+}
+
+/* Multiple Modals Stacking */
+.actus-modal-overlay:nth-of-type(n+2) {
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+/* =============================================================================
+   ERROR MESSAGE STYLES
+   ============================================================================= */
+
+.acex-error-message {
+	text-align: center;
+	padding: 20px 10px;
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+.acex-error-icon {
+	margin: 0 auto 20px;
+	animation: errorPulse 0.5s ease-out;
+}
+
+@keyframes errorPulse {
+	0% {
+		transform: scale(0.8);
+		opacity: 0;
+	}
+	50% {
+		transform: scale(1.1);
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+.acex-error-icon svg {
+	display: block;
+	margin: 0 auto;
+}
+
+.acex-error-title {
+	font-size: 24px;
+	font-weight: 600;
+	color: #dc3545;
+	margin: 0 0 12px 0;
+	line-height: 1.3;
+}
+
+.acex-error-description {
+	font-size: 15px;
+	color: #666;
+	margin: 0 0 16px 0;
+	line-height: 1.5;
+}
+
+.acex-error-details {
+	background: #fff5f5;
+	border: 1px solid #ffcccb;
+	border-left: 4px solid #dc3545;
+	border-radius: 6px;
+	padding: 16px;
+	margin: 16px 0;
+	text-align: left;
+}
+
+.acex-error-details ul {
+	list-style: disc;
+	padding-left: 16px;
+}
+.acex-error-details li {
+    display: flex;
+}
+.acex-error-details li i {
+    font-style: normal;
+    margin-right: 6px;
+}
+.acex-error-details li span {
+    flex: 0;
+    min-width: 56px;
+	margin-right: 6px;
+}
+
+.acex-error-details code {
+	font-size: 12px;
+	color: #c7254e;
+	background: transparent;
+	padding: 0;
+	word-break: break-word;
+	display: block;
+}
+
+.acex-error-help {
+	font-size: 14px;
+	color: #888;
+	margin: 16px 0 0 0;
+	line-height: 1.5;
+}
+
+/* Dark mode support for error messages */
+@media (prefers-color-scheme: dark) {
+	.acex-error-title {
+		color: #ff6b6b;
+	}
+
+	.acex-error-description {
+		color: #b0b0b0;
+	}
+
+	.acex-error-details {
+		background: #2d1f1f;
+		border-color: #5c3030;
+		border-left-color: #ff6b6b;
+	}
+
+	.acex-error-details code {
+		color: #ff8a8a;
+	}
+
+	.acex-error-help {
+		color: #999;
+	}
+}
+
+
+
+
+
+/* Success Message Styles (bonus for consistency) */
+.acex-success-message {
+	text-align: center;
+	padding: 20px 10px;
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+.acex-success-icon {
+	margin: 0 auto 20px;
+	animation: successBounce 0.6s ease-out;
+}
+
+@keyframes successBounce {
+	0% {
+		transform: scale(0.8) translateY(-10px);
+		opacity: 0;
+	}
+	50% {
+		transform: scale(1.1) translateY(0);
+	}
+	70% {
+		transform: scale(0.95);
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+.acex-success-icon svg {
+	display: block;
+	margin: 0 auto;
+}
+
+.acex-success-title {
+	font-size: 24px;
+	font-weight: 600;
+	color: #28a745;
+	margin: 0 0 12px 0;
+	line-height: 1.3;
+}
+
+.acex-success-description {
+	font-size: 15px;
+	color: #666;
+	margin: 0 0 16px 0;
+	line-height: 1.5;
+}
+
+.acex-success-details {
+	background: #f0f9f4;
+	border: 1px solid #c3e6cb;
+	border-left: 4px solid #28a745;
+	border-radius: 6px;
+	padding: 16px;
+	margin: 16px 0;
+	text-align: left;
+}
+
+.acex-success-details p {
+	margin: 8px 0;
+	color: #155724;
+	font-size: 14px;
+	line-height: 1.6;
+}
+
+.acex-success-details strong {
+	color: #0d3d1a;
+	font-weight: 600;
+}
+
+/* Dark mode support for success messages */
+@media (prefers-color-scheme: dark) {
+	.acex-success-title {
+		color: #4ade80;
+	}
+
+	.acex-success-description {
+		color: #b0b0b0;
+	}
+
+	.acex-success-details {
+		background: #1a2e1f;
+		border-color: #2d5030;
+		border-left-color: #4ade80;
+	}
+
+	.acex-success-details p {
+		color: #a3e4a3;
+	}
+
+	.acex-success-details strong {
+		color: #c3f0c3;
+	}
+}
+
+
+
+
+/* Warning Message Styles */
+.acex-warning-message {
+	text-align: center;
+	padding: 20px 10px;
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+.acex-warning-icon {
+	margin: 0 auto 20px;
+	animation: warningShake 0.5s ease-out;
+}
+
+@keyframes warningShake {
+	0%, 100% {
+		transform: translateX(0);
+	}
+	25% {
+		transform: translateX(-5px);
+	}
+	75% {
+		transform: translateX(5px);
+	}
+}
+
+.acex-warning-icon svg {
+	display: block;
+	margin: 0 auto;
+}
+
+.acex-warning-title {
+	font-size: 24px;
+	font-weight: 600;
+	color: #ffc107;
+	margin: 0 0 12px 0;
+	line-height: 1.3;
+}
+
+.acex-warning-description {
+	font-size: 15px;
+	color: #666;
+	margin: 0 0 16px 0;
+	line-height: 1.5;
+}
+
+.acex-warning-list {
+	background: #fffbf0;
+	border: 1px solid #ffe69c;
+	border-left: 4px solid #ffc107;
+	border-radius: 6px;
+	padding: 8px 12px;
+	margin: 16px 0;
+	text-align: left;
+}
+
+.acex-warning-list li i {
+    font-style: normal;
+    margin-right: 6px;
+}
+.acex-warning-list li span {
+    flex: 0;
+    min-width: 56px;
+	margin-right: 6px;
+}
+.acex-warning-list li {
+	display: flex;
+	color: #856404;
+	font-size: 12px;
+	line-height: 1.3;
+	margin: 4px 0;
+}
+
+/* Dark mode support for warning messages */
+@media (prefers-color-scheme: dark) {
+	.acex-warning-title {
+		color: #ffd54f;
+	}
+
+	.acex-warning-description {
+		color: #b0b0b0;
+	}
+
+	.acex-warning-list {
+		background: #2d2a1f;
+		border-color: #5c5030;
+		border-left-color: #ffd54f;
+	}
+
+	.acex-warning-list li {
+		color: #ffecb3;
+	}
+}
+
+
+
+
+
+/* Info Message Styles */
+.acex-info-message {
+	text-align: center;
+	padding: 20px 10px;
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+.acex-info-icon {
+	margin: 0 auto 20px;
+	animation: infoFade 0.4s ease-out;
+}
+
+@keyframes infoFade {
+	0% {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.acex-info-icon svg {
+	display: block;
+	margin: 0 auto;
+}
+
+.acex-info-title {
+	font-size: 24px;
+	font-weight: 600;
+	color: #2196F3;
+	margin: 0 0 12px 0;
+	line-height: 1.3;
+}
+
+.acex-info-description {
+	font-size: 15px;
+	color: #666;
+	margin: 0 0 16px 0;
+	line-height: 1.5;
+}
+
+.acex-info-details {
+	background: #f0f8ff;
+	border: 1px solid #b3d9ff;
+	border-left: 4px solid #2196F3;
+	border-radius: 6px;
+	padding: 16px;
+	margin: 16px 0;
+	text-align: left;
+}
+
+.acex-info-details p {
+	margin: 8px 0;
+	color: #004085;
+	font-size: 14px;
+	line-height: 1.6;
+}
+
+.acex-info-details strong {
+	color: #002752;
+	font-weight: 600;
+}
+
+
+
+
+/* Dark mode support for info messages */
+@media (prefers-color-scheme: dark) {
+	.acex-info-title {
+		color: #64b5f6;
+	}
+
+	.acex-info-description {
+		color: #b0b0b0;
+	}
+
+	.acex-info-details {
+		background: #1a2530;
+		border-color: #2d4a5c;
+		border-left-color: #64b5f6;
+	}
+
+	.acex-info-details p {
+		color: #90caf9;
+	}
+
+	.acex-info-details strong {
+		color: #bbdefb;
+	}
+}
+
+/* Progress Message Styles */
+.acex-progress-message {
+	text-align: center;
+	padding: 20px 10px;
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+.acex-progress-icon {
+	margin: 0 auto 20px;
+}
+
+.acex-progress-title {
+	font-size: 20px;
+	font-weight: 600;
+	color: #333;
+	margin: 0 0 20px 0;
+	line-height: 1.3;
+}
+
+.acex-progress-bar {
+	width: 100%;
+	height: 8px;
+	background: #e0e0e0;
+	border-radius: 4px;
+	overflow: hidden;
+	margin: 0 0 12px 0;
+}
+
+.acex-progress-fill {
+	height: 100%;
+	background: linear-gradient(90deg, #2196F3, #64b5f6);
+	border-radius: 4px;
+	transition: width 0.3s ease;
+	animation: progressPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes progressPulse {
+	0%, 100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.8;
+	}
+}
+
+.acex-progress-text {
+	font-size: 14px;
+	color: #666;
+	margin: 0;
+	font-weight: 500;
+}
+
+/* Dark mode support for progress messages */
+@media (prefers-color-scheme: dark) {
+	.acex-progress-title {
+		color: #e0e0e0;
+	}
+
+	.acex-progress-bar {
+		background: #333;
+	}
+
+	.acex-progress-text {
+		color: #b0b0b0;
+	}
+}
